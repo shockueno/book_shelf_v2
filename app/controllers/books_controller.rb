@@ -24,7 +24,13 @@ class BooksController < ApplicationController
     
   end
   
-
+  def destroy
+    # URLで指定した番号のモデルを削除する
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to books_path
+  end
+  
   private 
   def book_params
      params.require(:book).permit(
