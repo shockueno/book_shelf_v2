@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   # resources モデル名の複数形
   resources :books
+  root 'books#index'
 end

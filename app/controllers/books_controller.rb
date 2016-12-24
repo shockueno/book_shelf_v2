@@ -1,12 +1,13 @@
 class BooksController < ApplicationController
+  before_action :set_book, only: [:show, :edit, :update, :destroy]
   def index
     @books = Book.all
   end
   def show 
-    @book = Book.find(params[:id])
+    @book = B ook.find(params[:id])
   end
   def new
-    @book = Book.new
+    @book = Book. new
   end 
   def create
     @book = Book.new(book_params)
@@ -27,13 +28,18 @@ class BooksController < ApplicationController
   def destroy
     # URLで指定した番号のモデルを削除する
     @book = Book.find(params[:id])
-    @book.destroy
+    @book.destroy   
     redirect_to books_path
   end
   
   private 
-  def book_params
-     params.require(:book).permit(
-       :name, :price, :publish, :publish_date)
+  def set_book
+    @book = Book.find(params[:id])
   end
+  
+  def book_params
+     params.require(:book).permit(:name, :price, :publish, :publish_date)
+  end
+  
+  
 end
