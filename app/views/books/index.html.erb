@@ -3,6 +3,7 @@
     <li>
         <%= book.name %>
         <%=link_to "詳細", book_path(book) %>
+        <%=link_to "編集", edit_book_path(book) %>
     </li>
 <% end %>
 </ul>
